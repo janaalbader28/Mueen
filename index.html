@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>مرحباً — معينك</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-bg">
+
+  <main class="phone">
+        <div id="splash">
+  <img src="logo.png" alt="معينك" class="splash-logo">
+</div>
+    <header class="statusbar">◦◦ 🔋<span class="status-icons">9:41</span></header>
+
+<div class="content welcome">
+  <a href="welcome.html">
+    <img src="logo.png" alt="معينك" class="logo-img">
+  </a>
+
+  <h1 class="big-title">مرحباً بك في<br>مُعينك</h1>
+
+  <a class="pill-btn primary" href="login.html">ابدأ</a>
+  <button id="startMueen" class="pill-btn primary">🎤 فعل معين</button>
+
+</div>
+  
+
+
+  </main>
+<script src="mueen.js"></script>
+<script>
+  document.getElementById("startMueen").addEventListener("click", () => {
+    startMueen(); // دالة في mueen.js
+  });
+</script>
+<script src="javascript.js"></script>
+
+
+</body>
+</html>

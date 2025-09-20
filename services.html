@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الإعدادات — النظام الذكي</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<main class="phone" role="main">
+  <header class="statusbar">◦◦ 🔋<span class="status-icons">9:41</span></header>
+
+  <button class="back-btn-floating" onclick="history.back()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <div class="top-row logo-only">
+    <div class="top-right">
+      <img src="logo.png" alt="معينك" class="logo-small">
+    </div>
+  </div>
+
+  <div class="orders-page">
+    <h2 class="orders-title" style="text-align:center;">خدمات الوثائق
+      <br>
+       الرسمية</h2>
+       
+    <div class="orders-box">
+      <div id="formMessage" class="error-message" style="display:none; color:red; margin-top:10px; text-align:center;"></div>
+<!-- زر تفعيل معين -->
+<button id="startMueenService" class="pill-btn primary" type="button">🎤 فعل معين</button>
+
+
+<form class="service-form custom-form" method="post">
+        <h3>إدخال بيانات الخدمة</h3>
+
+  <div class="form-group">
+    <label for="full-name">الاسم الكامل</label>
+    <input type="text" id="full-name" name="full-name" placeholder="أدخل اسمك الكامل">
+  </div>
+
+
+        <div class="form-group">
+          <label for="national-id">رقم الهوية الوطنية</label>
+          <input type="text" id="national-id" name="national-id" placeholder="أدخل رقم الهوية" >
+        </div>
+
+          <div class="form-group">
+    <label for="phone">رقم الجوال</label>
+    <input type="text" id="phone" name="phone" placeholder="05XXXXXXXX">
+  </div>
+
+  <div class="form-group">
+  <label for="service">اختر الخدمة</label>
+  <select id="service" name="service">
+    <option value="">-- اختر الخدمة --</option>
+    <option value="renew-passport">تجديد الجواز</option>
+    <option value="renew-license">تجديد الرخصة</option>
+    <option value="renew-id">تجديد الهوية</option>
+    <option value="lost-passport">فقدان جواز</option>
+    <option value="lost-license">فقدان رخصة</option>
+    <option value="lost-id">فقدان هوية</option>
+    <option value="new-license">إصدار رخصة</option>
+    <option value="new-id">إصدار هوية</option>
+  </select>
+</div>
+
+                <div class="form-group">
+          <label for="date">تحديد التاريخ المتاح</label>
+          <input type="date" id="date" name="date" >
+        </div>
+
+
+        <button type="submit" class="submit-btn">متابعة</button>
+      </form>
+      
+      
+    </div>
+  </div>
+    <!-- Popup -->
+  <div id="popup" class="popup-overlay">
+    <div class="popup-content">
+      <p>تأكيد إرسال الطلب </p>
+      <div class="popup-actions">
+        <button id="confirmSend" class="popup-call">إرسال</button>
+        <button onclick="closePopup()" class="popup-cancel">إلغاء</button>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<script src="mueen.js"></script>
+<script>
+  document.getElementById("startMueenService").addEventListener("click", () => {
+    startMueenServicesFlow(); // يبدأ بسؤال الاسم ثم باقي الحقول
+  });
+</script>
+<script src="javascript.js"></script>
+
+</body>
+</html>

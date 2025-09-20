@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أرقام الطوارئ — النظام الذكي</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-bg">
+
+<main class="phone" role="main">
+  <header class="statusbar">◦◦ 🔋<span class="status-icons">9:41</span></header>
+
+  <button class="back-btn-floating" onclick="history.back()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <div class="top-row logo-only">
+    <div class="top-right">
+      <img src="logo.png" alt="معينك" class="logo-small">
+    </div>
+  </div>
+
+  <div class="emergency-page">
+    <h2 class="settings-title">أرقام الطوارئ</h2>
+
+    <div class="emergency-box">
+      <div class="emergency-item" onclick="showPopup('999')">
+        <span class="emergency-name">الشرطة</span>
+        <span class="emergency-number">999</span>
+      </div>
+
+      <div class="emergency-item" onclick="showPopup('997')">
+        <span class="emergency-name">الإسعاف</span>
+        <span class="emergency-number">997</span>
+      </div>
+
+      <div class="emergency-item" onclick="showPopup('998')">
+        <span class="emergency-name">الدفاع المدني</span>
+        <span class="emergency-number">998</span>
+      </div>
+
+      <div class="emergency-item" onclick="showPopup('996')">
+        <span class="emergency-name">أمن الطرق</span>
+        <span class="emergency-number">996</span>
+      </div>
+
+      <div class="emergency-item" onclick="showPopup('993')">
+        <span class="emergency-name">حوادث المرور</span>
+        <span class="emergency-number">993</span>
+      </div>
+
+      <div class="emergency-item" onclick="showPopup('933')">
+        <span class="emergency-name">الكهرباء</span>
+        <span class="emergency-number">933</span>
+      </div>
+
+      <div class="emergency-item" onclick="showPopup('939')">
+        <span class="emergency-name">المياه</span>
+        <span class="emergency-number">939</span>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="popup" class="popup-overlay">
+  <div class="popup-content">
+    <p id="popup-text">هل تريد الاتصال بالرقم؟</p>
+    <div class="popup-actions">
+      <a id="call-btn" href="#" class="popup-call">اتصال</a>
+      <button onclick="closePopup()" class="popup-cancel">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<script src="javascript.js"></script>
+<script src="mueen.js"> </script>
+
+</body>
+</html>

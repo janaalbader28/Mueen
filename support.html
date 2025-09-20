@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الإعدادات — النظام الذكي</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body class="app-bg">
+
+<main class="phone" role="main">
+  <header class="statusbar">◦◦ 🔋<span class="status-icons">9:41</span></header>
+
+<button class="back-btn-floating" onclick="history.back()">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+    <div class="top-row logo-only">
+
+<div class="top-right">
+    <img src="logo.png" alt="معينك" class="logo-small">
+</div>
+    </div>
+<div class="orders-page">
+  <h2 class="orders-title">
+طلب دعم
+<br>
+ لذوي الاحتياجات
+  </h2>
+
+<div class="support-box">
+  <div id="formMessage" class="error-message" style="display:none; color:red; margin:10px 0; text-align:center;"></div>
+<button id="startMueenService" class="pill-btn primary" type="button">🎤 فعل معين</button>
+
+  <form class="support-form custom-form" method="post">
+
+    <div class="form-group">
+      <label for="full-name">الاسم الكامل</label>
+      <input type="text" id="full-name" name="full-name" placeholder="أدخل اسمك الكامل">
+    </div>
+
+    <div class="form-group">
+      <label for="national-id">رقم الهوية الوطنية</label>
+      <input type="text" id="national-id" name="national-id" placeholder="أدخل رقم الهوية">
+    </div>
+
+    <div class="form-group">
+      <label for="phone">رقم الجوال</label>
+      <input type="text" id="phone" name="phone" placeholder="05XXXXXXXX">
+    </div>
+
+    <div class="form-group">
+      <label for="disability">نوع الاحتياج</label>
+      <select id="disability" name="disability">
+        <option value="">-- اختر نوع الإعاقة --</option>
+        <option value="movement">حركية</option>
+        <option value="visual">بصرية</option>
+        <option value="hearing">سمعية</option>
+        <option value="mental">ذهنية</option>
+        <option value="other">أخرى</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="support">نوع الدعم المطلوب</label>
+      <select id="support" name="support">
+        <option value="">-- اختر نوع الدعم --</option>
+        <option value="financial">مساعدة مالية</option>
+        <option value="medical">أجهزة طبية</option>
+        <option value="companion">مرافقة</option>
+        <option value="education">دعم تعليمي</option>
+        <option value="tech">دعم تقني</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="file">إرفاق تقرير طبي</label>
+      <input type="file" id="file" name="file" accept=".pdf,.jpg,.png">
+    </div>
+
+      <label for="message">ملاحظات إضافية</label>
+<div class="textarea-wrapper">
+  <textarea id="message" name="message" rows="4" placeholder="أدخل أي تفاصيل إضافية"></textarea>
+  <span id="charCount">0/500</span>
+</div>
+
+    <button type="submit" class="submit-btn">إرسال الطلب</button>
+  </form>
+</div>
+
+</div>
+
+
+  <!-- Popup -->
+  <div id="popup" class="popup-overlay">
+    <div class="popup-content">
+      <p>هل تريد إرسال الطلب</p>
+      <div class="popup-actions">
+        <button id="confirmSend" class="popup-call">إرسال</button>
+        <button onclick="closePopup()" class="popup-cancel">إلغاء</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+</main>
+<script src="mueen.js"></script>
+<script>
+  document.getElementById("startMueenService").addEventListener("click", () => {
+    startMueenFlow(); // run the support flow
+  });
+</script>
+<script src="javascript.js"></script>
+
+
+</body>
+</html>
