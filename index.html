@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>مرحباً — معينك</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-bg">
+
+  <div class="audio-notification" id="audioNotification">
+    🔊 المساعد الصوتي جاهز
+  </div>
+
+  <!-- نص مخفي للمكفوفين -->
+  <div class="sr-only">
+    تطبيق معينك - نظام الطوارئ لذوي الإعاقة. زر المساعد الصوتي في الزاوية اليسرى السفلية.
+  </div>
+
+  <main class="phone">
+    <div id="splash">
+      <img src="logo.png" alt="معينك" class="splash-logo">
+    </div>
+    
+    <header class="statusbar">◦◦ 🔋<span class="status-icons">9:41</span></header>
+
+    <div class="content welcome">
+      <a href="welcome.html">
+        <img src="logo.png" alt="معينك" class="logo-img">
+      </a>
+
+      <h1 class="big-title">مرحباً بك في<br>مُعينك</h1>
+
+      <a class="pill-btn primary" href="login.html">ابدأ</a>
+    </div>
+
+    <!-- زر المساعد الذكي -->
+    <button id="startMueen"  class="ai-assistant-btn" onclick="openAIAssistant()" aria-label="فتح المساعد الذكي">
+      🤖
+    </button>
+
+    <!-- نافذة المساعد -->
+    <div class="ai-window" id="aiWindow">
+      <div class="ai-header">
+        <h3 class="ai-title">المساعد الذكي - معينك</h3>
+        <button class="ai-close" onclick="closeAI()" aria-label="إغلاق النافذة">✖</button>
+      </div>
+      
+      <div class="ai-message" id="aiMessage">
+        🎯 مرحباً! أنا مساعدك الذكي. يمكنني:
+        <br>• توجيهك للخدمات المناسبة
+        <br>• قراءة محتوى الصفحات
+        <br>• المساعدة في الطوارئ
+        <br>• التفاعل باللغة العربية
+      </div>
+      
+      <div class="ai-controls">
+        <button class="ai-btn secondary" onclick="showArabicCommands()">
+          📋 الأوامر المتاحة
+        </button>
+        <button class="ai-btn secondary" onclick="readPageContent()">
+          📖 اقرأ هذه الصفحة
+        </button>
+<button class="ai-btn secondary" onclick="handleServiceButton('services')">
+  📑 خدمات الوثائق الرسمية
+</button>
+
+<button class="ai-btn secondary" onclick="handleServiceButton('emergency')">
+  🏥 الذهاب للطوارئ
+</button>
+      </div>
+    </div>
+
+  </main>
+  
+  <script src="mueen.js"></script>
+  <script src="javascript.js"></script>
+  <script>
+
+
+    // دالة عرض الإشعار
+    function showNotification(message) {
+      const notification = document.getElementById('audioNotification');
+      notification.textContent = message;
+      notification.style.display = 'block';
+      setTimeout(() => {
+        notification.style.display = 'none';
+      }, 3000);
+    }
+
+    // دالة فتح نافذة المساعد
+    function openAIAssistant() {
+      document.getElementById('aiWindow').style.display = 'block';
+      speakArabic("مرحباً، أنا مساعدك الذكي معينك. كيف يمكنني مساعدتك اليوم؟");
+    }
+    
+    // دالة إغلاق النافذة
+    function closeAI() {
+      document.getElementById('aiWindow').style.display = 'none';
+      speakArabic("إلى اللقاء، أنا هنا إذا احتجتني");
+    }
+function handleServiceButton(type) {
+  if (speechSynthesis.speaking) speechSynthesis.cancel();
+
+  if (recognition) recognition.stop();
+
+  if (type === "services") {
+    if (!userData.email || !userData.password) {
+      speak("للوصول إلى الخدمات، من فضلك سجل الدخول أولاً.");
+      window.location.href = "login.html";
+    } else {
+      startMueenServicesFlow();
+    }
+  } 
+  else if (type === "emergency") {
+    const callNumber = "997"; // emergency number
+    const message = `جاري الاتصال بالطوارئ الآن على ${callNumber}`;
+    const utterance = new SpeechSynthesisUtterance(message);
+    utterance.lang = "ar-SA";
+
+    utterance.onend = () => {
+      window.location.href = `emergency.html?call=${callNumber}`;
+    };
+
+    speechSynthesis.speak(utterance);
+  }
+}
+
+
+    // دالة عرض الأوامر المتاحة
+    function showArabicCommands() {
+      const commands = 
+"الأوامر المتاحة: خدمات الوثائق الرسمية، طلب دعم أو المساعدة، الاستعلامات، اتصال على الطوارئ.";
+      document.getElementById('aiMessage').textContent = commands;
+      speakArabic(commands);
+    }
+
+    // دالة قراءة محتوى الصفحة
+    function readPageContent() {
+      const text = document.body.innerText;
+      document.getElementById('aiMessage').textContent = "📖 جاري قراءة محتوى الصفحة...";
+      speakArabic(text);
+    }
+
+    // دالة محاكاة النطق بالعربية
+    function speakArabic(text) {
+      if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "ar-SA"; // لهجة سعودية عربية
+        speechSynthesis.speak(utterance);
+      } else {
+        console.log("النطق غير مدعوم في هذا المتصفح.");
+      }
+    }
+  </script>
+  <script>
+  document.getElementById("startMueen").addEventListener("click", () => {
+    startMueen(); // دالة في mueen.js
+  });
+</script>
+</body>
+</html>

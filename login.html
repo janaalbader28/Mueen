@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>تسجيل الدخول — معينك</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body class="app-bg">
+  <main class="phone">
+    <header class="statusbar">◦◦ 🔋<span class="status-icons">9:41</span></header>
+
+<div class="content">
+  <a href="welcome.html">
+    <img src="logo.png" alt="معينك" class="logo-img">
+  </a>
+
+  <h2 class="page-title">تسجيل الدخول</h2>
+<!-- Nafath Login Button -->
+<a href="https://my.gov.sa/ar/services/119727" target="_blank" class="nafath-btn">
+  تسجيل دخول عبر نفاذ
+</a>
+
+<div class="form-message" id="formMessage"></div>
+
+<form id="loginForm" class="form" action="homepage.html">
+<input id="email" class="field" placeholder="البريد الإلكتروني أو اسم المستخدم">
+
+  <div class="input-wrapper">
+    <input id="password" class="field" type="password" placeholder="كلمة المرور" >
+    <i class="fa-solid fa-eye toggle-password" id="togglePassword"></i>
+  </div>
+
+  <a class="tiny-link" href="Forget Password.html">هل نسيت كلمة المرور؟</a>
+  <button class="pill-btn primary" type="submit">تسجيل الدخول</button>
+</form>
+
+
+
+  <a class="tiny-link center" href="signup.html">ليس لديك حساب؟ إنشاء حساب</a>
+  <i class="fas fa-volume-up speaker-icon"></i>
+
+</div>
+
+  </main>
+<script src="mueen.js"></script>
+<script>
+  window.onload = () => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("action") === "autofill") {
+      // auto-fill email/password stored by Mueen
+      document.getElementById("email").value = localStorage.getItem("email") || "";
+      document.getElementById("password").value = localStorage.getItem("password") || "";
+
+      const post = localStorage.getItem("postLogin") || "services"; 
+
+      setTimeout(() => {
+        document.querySelector("#loginForm").submit();
+        if (post === "support") {
+          window.location.href = "support.html?action=voice";
+        } else {
+          window.location.href = "services.html?action=voice";
+        }
+      }, 1200);
+    }
+  }
+</script>
+
+
+
+<script src="javascript.js"></script>
+
+
+
+
+
+</body>
+</html>
