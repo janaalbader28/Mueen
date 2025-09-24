@@ -2,9 +2,13 @@
 
 **Mueen** is an accessible app that helps users, including people with disabilities, **manage official services and support requests easily**. The app is designed with **HCI principles**, offering voice assistance, customizable interface, and inclusive navigation.
 
-🌐 Live Website: [mueen-app](https://mueen-app.netlify.app/)  
+## 🌐 Live Website: 
+[mueen-app](https://mueen-app.netlify.app/)  
 
-## Features
+## 📽  Demo
+soon....
+
+## Features:
 - **Voice Assistance:** Guides users from the welcome page through all tasks, including filling forms and submitting requests.  
 - **Services Page:** Submit official service requests via full forms.  
 - **Support Page:** Specify disability type and request needed support.  
@@ -15,5 +19,5 @@
 - **Chatbot:** Provides guidance and answers questions.  
 - **Accessibility Options:** Light/dark mode and adjustable font sizes.
 
-## Purpose
+## Purpose:
 Mueen makes accessing services, requesting support, and communicating **easy, fast, and inclusive** for all users.
